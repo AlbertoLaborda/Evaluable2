@@ -35,7 +35,7 @@ public class Libro implements Serializable{
 	private int cantidadEjemplares;
 	
 	@NotEmpty
-	@Size(min = 2, max = 30)
+	@Size(min = 2, max = 50)
 	private String editorial;
 
 	public String getAutor() {

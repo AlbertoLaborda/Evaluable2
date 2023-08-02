@@ -27,14 +27,18 @@
 
 	<!-- Todos los class son de bootstrap -->
 	<div class="container">
+		<br><br>
 		<h1 class="text-primary" th:text="${titulo}"></h1>
-		<p ></p>
+		<br><br><br><p class="text-primary" th:text="${enlace}"></p>
 		<table class="table table-striped">
 			<tr>
-				<td><a th:href="@{/libro/listar}"></a>Lista de Libros</td>
-				<td><a th:href="@{/libro/form}"></a>Crear nuevo Libro</td>
-				<td><a th:href="@{/Usuario/listar}"></a>Lista de Usuarios</td>
-				<td><a th:href="@{/Usuario/form}"></a>Crear nuevo Usuario</td>
+				<td><a th:href="@{/libro/listar}">Lista de Libros</a></td>
+				<td><a th:href="@{/libro/form}">Crear nuevo Libro</a></td>
+			</tr>
+			<tr><td></td></tr>
+			<tr>
+				<td><a th:href="@{/Usuario/listar}">Lista de Usuarios</a></td>
+				<td><a th:href="@{/Usuario/form}">Crear nuevo Usuario</a></td>
 			</tr>
 		</table>
 	</div>
