@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title th:text="${pestana}"></title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/styleError.css}"></link>
+
+</head>
+<body>
+	
+	<table >
+		<theader>
+			<th colspan="2"><strong th:text="${titulo}"></strong></th>
+		</theader>
+		<tbody>
+			<tr>
+    			<th>Error</th>
+    			<td th:text="${error}"></td>
+  			</tr>
+  			<tr>
+    			<th>Timestamp</th>
+    			<td th:text="${timestamp}"></td>
+  			</tr>
+  			<tr>
+    			<th>message</th>
+    			<td th:text="${message}"></td>
+  			</tr>
+		</tbody>
+	</table>
+<div align="center"><a th:href="@{/}"><img th:src="@{/images/atras.png}" alt="Atras" width="75px" height="75px" ></a></div>
+</body>
+</html>

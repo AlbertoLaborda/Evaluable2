@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.midominio.Evaluable02.app.Exception.IdUsuarioNoExisteException;
 import com.midominio.Evaluable02.app.Model.Identity.Usuario;
 import com.midominio.Evaluable02.app.Service.IUsuarioService;
 
@@ -53,18 +54,17 @@ public class UsuarioController {
 	}
 	
 	@GetMapping("/usuario/form/{id}")
-	public String actualizar(@PathVariable("id") Long id,Map<String,Object>model) {
+	public String actualizar(@PathVariable("id") Long id,Map<String,Object>model) throws IdUsuarioNoExisteException{
 		Optional<Usuario> usuario = null;
-		if(id>0) {
-			usuario = servicioUsuario.findById(id);
-			if(usuario==null) return "redirect:/usuario/listar";
+		if(!(servicioUsuario.findById(id).isPresent())) {
+			throw new IdUsuarioNoExisteException("Usuario no encontrado");
 		}else {
-			return "redirect:/usuario/listar";
+			usuario = servicioUsuario.findById(id);
+			model.put("usuario", usuario);
+			model.put("encabezado", "Editar usuario"); 	
+			return "usuario/form";
 		}
-		model.put("usuario", usuario);
-		model.put("encabezado", "Editar usuario"); 	
-		return "usuario/form";	
-	}
+		}	
 	
 	@GetMapping("/usuario/eliminar/{id}")
 	public String eliminar(@PathVariable("id") Long id) {

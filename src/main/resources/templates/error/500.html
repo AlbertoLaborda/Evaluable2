@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${error}"></title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/styleError.css}"></link>
+
+</head>
+<body><div align="center">
+	<p th:text="${lista}"></p>
+	<h1 th:text="${error}">Error 500 </h1>
+	<div th:text="${message}"></div>
+	<hr>
+
+	<div th:text="${status}"></div>
+	<hr>
+	<div th:text="${timestamp}"></div>
+	<hr>
+	<div th:text="${trace}"></div>
+	<hr>
+</div>
+<div align="center"><a th:href="@{/}"><img th:src="@{/images/atras.png}" alt="Atras" width="75px" height="75px" ></a></div>
+	
+</body>
+</html>

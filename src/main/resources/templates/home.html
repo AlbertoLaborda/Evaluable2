@@ -9,6 +9,14 @@
 	rel="stylesheet"
 	integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
 	crossorigin="anonymous">
+		<style>
+        body {
+            background-image: url('/images/cam.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
 </head>
 <body>
 	<!-- Navigation bar bootstrap -->
@@ -35,10 +43,17 @@
 				<td><a th:href="@{/libro/listar}">Lista de Libros</a></td>
 				<td><a th:href="@{/libro/form}">Crear nuevo Libro</a></td>
 			</tr>
-			<tr><td></td></tr>
+			
 			<tr>
-				<td><a th:href="@{/Usuario/listar}">Lista de Usuarios</a></td>
-				<td><a th:href="@{/Usuario/form}">Crear nuevo Usuario</a></td>
+				<td><a th:href="@{/usuario/listar}">Lista de Usuarios</a></td>
+				<td><a th:href="@{/usuario/form}">Crear nuevo Usuario</a></td>
+			</tr>
+			<tr>
+				<td><a th:href="@{/usuario/animales}">Error 404</a></td>
+				<td><a th:href="@{/division}">Error 500</a></td>
+			</tr><tr>
+				<td><a th:href="@{/usuario/form/60}">Internal Error Usuario</a></td>
+				<td><a th:href="@{/libro/form/60}">Internal Error Libro</a></td>
 			</tr>
 		</table>
 	</div>

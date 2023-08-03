@@ -1,0 +1,19 @@
+@charset "UTF-8";
+.titulo{
+	text-align: center;
+}
+
+table, tr,th,td{
+	padding: 10px;
+	border: solid red 2px;
+	border-collapse: collapse;
+	margin: auto;
+	margin-top: 10%;
+	text-decoration-color: orangered;
+}
+body {
+            background-image: url('/images/cam.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }

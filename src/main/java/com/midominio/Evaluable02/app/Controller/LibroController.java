@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.midominio.Evaluable02.app.Exception.IdLibroNoExisteException;
 import com.midominio.Evaluable02.app.Model.Identity.Libro;
 import com.midominio.Evaluable02.app.Service.ILibroService;
 
@@ -52,20 +53,20 @@ public class LibroController {
 		libroService.save(libro);
 		return "redirect:/libro/listar";
 	}
-	
+		
 	@GetMapping("/libro/form/{id}")
-	public String actualizar(@PathVariable("id") Long id,Map<String,Object>model) {
+	public String actualizar(@PathVariable("id") Long id,Map<String,Object>model) throws IdLibroNoExisteException{
 		Optional<Libro> libro = null;
-		if(id>0) {
-			libro = libroService.findById(id);
-			if(libro==null) return "redirect:/libro/listar";
+		if(!(libroService.findById(id).isPresent())) {
+			throw new IdLibroNoExisteException("Libro no encontrado");
 		}else {
-			return "redirect:/libro/listar";
+			libro = libroService.findById(id);
+			model.put("libro", libro);
+			model.put("encabezado", "Editar libro"); 	
+			return "libro/form";
 		}
-		model.put("libro", libro);
-		model.put("encabezado", "Editar libro"); 	
-		return "libro/form";	
-	}
+		}		
+	
 	@GetMapping("/libro/eliminar/{id}")
 	public String eliminar(@PathVariable("id") Long id) {
 		if (id > 0)

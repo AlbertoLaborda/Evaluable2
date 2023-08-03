@@ -15,4 +15,12 @@ public class HomeController {
 
 		return "home";		
 	}
+	
+	@GetMapping({"/division"})
+	public String aas(Model model) {
+		
+		System.out.println(1/0);
+
+		return "home";		
+	}
 }

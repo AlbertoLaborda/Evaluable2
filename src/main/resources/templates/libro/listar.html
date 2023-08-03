@@ -9,6 +9,14 @@
 	rel="stylesheet"
 	integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
 	crossorigin="anonymous">
+	<style>
+        body {
+            background-image: url('/images/cam.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
 </head>
 <body>
 	<!-- Navigation bar bootstrap -->
@@ -39,7 +47,7 @@
 	</nav>
 
 	<!-- Todos los class son de bootstrap -->
-	<div class="container">
+	<div class="container" align="center">
 		<h1 class="text-primary" th:text="${encabezado}"></h1>
 
 		<table class="table table-striped">
@@ -70,7 +78,9 @@
 				</tr>
 			</tbody>
 		</table>
+		<a th:href="@{/}"><img th:src="@{/images/atras.png}" alt="Atras" width="75px" height="75px"></a>
 	</div>
+	
 
 	<!-- Script de bootstrap enlazado vía CDN-->
 	<script
