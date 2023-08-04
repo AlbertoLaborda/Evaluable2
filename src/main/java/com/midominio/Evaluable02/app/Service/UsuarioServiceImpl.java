@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,4 +42,31 @@ public class UsuarioServiceImpl implements IUsuarioService{
 		repositoryUsuario.deleteById(id);
 	}
 
+	@Override
+	public Page<Usuario> listar(Pageable pageable) {
+		// TODO paginado
+		return repositoryUsuario.findAll(pageable);
+	}
+	
+	@Transactional(readOnly = true)
+	@Override
+	public List<Usuario> findAllByOrderByNombreAsc(){
+		return repositoryUsuario.findAllByOrderByNombreAsc();
+	}
+	@Transactional(readOnly = true)
+	@Override
+	public List<Usuario> findAllByOrderByApellidoAsc(){
+		return repositoryUsuario.findAllByOrderByApellidoAsc();
+	}
+	
+	@Transactional(readOnly = true)
+	@Override
+	public List<Usuario> findAllByOrderByNombreDesc(){
+		return repositoryUsuario.findAllByOrderByNombreDesc();
+	}
+	@Transactional(readOnly = true)
+	@Override
+	public List<Usuario> findAllByOrderByApellidoDesc(){
+		return repositoryUsuario.findAllByOrderByApellidoDesc();
+	}
 }
