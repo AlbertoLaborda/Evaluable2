@@ -47,24 +47,24 @@ public class LibroServiceImpl implements ILibroService{
 	
 	@Transactional(readOnly = true)
 	@Override
-	public List<Libro> findAllByOrderByTituloAsc(){
-		return libroRepository.findAllByOrderByTituloAsc();
+	public Page<Libro> findAllByOrderByTituloAsc(Pageable pageable){
+		return libroRepository.findAllByOrderByTituloAsc(pageable);
 	}
 	@Transactional(readOnly = true)
 	@Override
-	public List<Libro> findAllByOrderByAutorAsc(){
-		return libroRepository.findAllByOrderByAutorAsc();
+	public Page<Libro> findAllByOrderByAutorAsc(Pageable pageable){
+		return libroRepository.findAllByOrderByAutorAsc(pageable);
 	}
 	
 	@Transactional(readOnly = true)
 	@Override
-	public List<Libro> findAllByOrderByTituloDesc(){
-		return libroRepository.findAllByOrderByTituloDesc();
+	public Page<Libro> findAllByOrderByTituloDesc(Pageable pageable){
+		return libroRepository.findAllByOrderByTituloDesc(pageable);
 	}
 	@Transactional(readOnly = true)
 	@Override
-	public List<Libro> findAllByOrderByAutorDesc(){
-		return libroRepository.findAllByOrderByAutorDesc();
+	public Page<Libro> findAllByOrderByAutorDesc(Pageable pageable){
+		return libroRepository.findAllByOrderByAutorDesc(pageable);
 	}
 
 }

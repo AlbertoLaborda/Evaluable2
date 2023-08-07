@@ -129,19 +129,33 @@ public class LibroController {
 			@PathVariable String campo, Model model) {
 
 		Pageable pageRequest = PageRequest.of(page,5);
-		Page<Libro> libros = libroService.listar(pageRequest);
-		PageRender<Libro> pageRender = new PageRender<>("/libro/listar-paginado", libros); 
+		PageRender<Libro> pageRender=null;
+		Page<Libro> libros = null;
 		
 		if (campo.equals("titulo")) {
+			if(ascTitulo)
+				libros = libroService.findAllByOrderByTituloDesc(pageRequest);
+			else
+				libros = libroService.findAllByOrderByTituloAsc(pageRequest);
+			
+			pageRender = new PageRender<>("/libro/titulo/asc?asc-titulo="+ascTitulo+"&asc-autor="+ascAutor, libros); 
+		
 			model.addAttribute("libros",
-					ascTitulo ? libroService.findAllByOrderByTituloDesc() : libroService.findAllByOrderByTituloAsc());
+					ascTitulo ? libroService.findAllByOrderByTituloDesc(pageRequest) : libroService.findAllByOrderByTituloAsc(pageRequest));
 			model.addAttribute("encabezado",
 					ascTitulo ? "Listado de Libros por titulo ascendente" : "Listado de Libros por titulo descendente");
 
 			ascTitulo = !ascTitulo;
+			
 		} else if (campo.equals("autor")) {
+			if(ascTitulo)
+				libros = libroService.findAllByOrderByAutorDesc(pageRequest);
+			else
+				libros = libroService.findAllByOrderByAutorAsc(pageRequest);
+			
+			pageRender = new PageRender<>("/libro/autor/asc?asc-titulo="+ascTitulo+"&asc-autor="+ascAutor, libros); 
 			model.addAttribute("libros",
-					ascAutor ? libroService.findAllByOrderByAutorDesc() : libroService.findAllByOrderByAutorAsc());
+					ascAutor ? libroService.findAllByOrderByAutorDesc(pageRequest) : libroService.findAllByOrderByAutorAsc(pageRequest));
 			model.addAttribute("encabezado",
 					ascAutor ? "Listado de Libros por autor ascendente" : "Listado de Libros por autor descendente");
 

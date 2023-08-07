@@ -1,7 +1,8 @@
 package com.midominio.Evaluable02.app.model.Repository;
 
-import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
@@ -11,12 +12,12 @@ import com.midominio.Evaluable02.app.Model.Identity.Libro;
 public interface IRepositoryLibro extends PagingAndSortingRepository<Libro, Long>,
 										  CrudRepository<Libro, Long>{
 
-	List<Libro> findAllByOrderByTituloAsc();
+	Page<Libro> findAllByOrderByTituloAsc(Pageable pageable);
 
-	List<Libro> findAllByOrderByAutorAsc();
+	Page<Libro> findAllByOrderByAutorAsc(Pageable pageable);
 	
-	List<Libro> findAllByOrderByTituloDesc();
+	Page<Libro> findAllByOrderByTituloDesc(Pageable pageable);
 
-	List<Libro> findAllByOrderByAutorDesc();
+	Page<Libro> findAllByOrderByAutorDesc(Pageable pageable);
 
 }

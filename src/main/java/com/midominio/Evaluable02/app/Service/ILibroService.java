@@ -1,7 +1,6 @@
 package com.midominio.Evaluable02.app.Service;
 
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -22,9 +21,9 @@ public interface ILibroService {
 	//Paginado
 	Page<Libro> listar(Pageable pageable);
 	
-	List<Libro> findAllByOrderByTituloAsc();	
-	List<Libro> findAllByOrderByAutorAsc();	
+	Page<Libro> findAllByOrderByTituloAsc(Pageable pageable);	
+	Page<Libro> findAllByOrderByAutorAsc(Pageable pageable);	
 	
-	List<Libro> findAllByOrderByTituloDesc();	
-	List<Libro> findAllByOrderByAutorDesc();	
+	Page<Libro> findAllByOrderByTituloDesc(Pageable pageable);	
+	Page<Libro> findAllByOrderByAutorDesc(Pageable pageable);	
 }
